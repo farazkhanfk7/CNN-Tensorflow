@@ -59,6 +59,7 @@ y_train = [i[1] for i in train]
 X_test = np.array([i[0] for i in test]).reshape(-1, IMG_SIZE, IMG_SIZE, 1)
 y_test = [i[1] for i in test]
 
+#CNN model with tflearn. Use tensorflow 1, 1.14.0 to use tflearn
 tf.reset_default_graph()
 convnet = input_data(shape=[None, IMG_SIZE, IMG_SIZE, 1], name='input')
 convnet = conv_2d(convnet, 32, 5, activation='relu')
@@ -79,7 +80,7 @@ model = tflearn.DNN(convnet, tensorboard_dir='log', tensorboard_verbose=0)
 model.fit({'input': X_train}, {'targets': y_train}, n_epoch=10, 
           validation_set=({'input': X_test}, {'targets': y_test}), 
           snapshot_step=500, show_metric=True, run_id=MODEL_NAME)
-          
+#For prediction          
 '''d = test_data[0]
 img_data, img_num = d
 
@@ -89,7 +90,7 @@ prediction = model.predict([data])[0]
 fig = plt.figure(figsize=(6, 6))
 ax = fig.add_subplot(111)
 ax.imshow(img_data, cmap="gray")
-print(f"cat: {prediction[0]}, dog: {prediction[1]}")
+print(f"cat: {prediction[0]}, dog: {prediction[1]}")'''
 
 fig=plt.figure(figsize=(16, 12))
 
