@@ -79,8 +79,8 @@ model = tflearn.DNN(convnet, tensorboard_dir='log', tensorboard_verbose=0)
 model.fit({'input': X_train}, {'targets': y_train}, n_epoch=10, 
           validation_set=({'input': X_test}, {'targets': y_test}), 
           snapshot_step=500, show_metric=True, run_id=MODEL_NAME)
-```          
-d = test_data[0]
+          
+'''d = test_data[0]
 img_data, img_num = d
 
 data = img_data.reshape(IMG_SIZE, IMG_SIZE, 1)
@@ -89,7 +89,7 @@ prediction = model.predict([data])[0]
 fig = plt.figure(figsize=(6, 6))
 ax = fig.add_subplot(111)
 ax.imshow(img_data, cmap="gray")
-print(f"cat: {prediction[0]}, dog: {prediction[1]}")```
+print(f"cat: {prediction[0]}, dog: {prediction[1]}")
 
 fig=plt.figure(figsize=(16, 12))
 
